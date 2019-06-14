@@ -11,11 +11,3 @@ CREATE TABLE burgers (
 	PRIMARY KEY (id)
 );
 
-INSERT INTO burgers (burger_name, devoured)
-		VALUES('Hamburger', FALSE);
-INSERT INTO burgers (burger_name, devoured)
-		VALUES('Cheese Burger', FALSE);
-INSERT INTO burgers (burger_name, devoured)
-		VALUES('Bacon Double Cheese Burger', FALSE);
-
-SELECT * FROM burgers;
