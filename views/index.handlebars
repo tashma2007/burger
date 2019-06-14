@@ -20,7 +20,7 @@
 				{{this.burger_name}}
 
 				<!--<form action="/api/burgers/{{this.id}}" method="POST">-->
-				<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+				<form action="burgers/insertOne/{{this.id}}?_method=PUT" method="POST">
 					<input type="hidden" name="devoured" value="false">
 					<button type="submit">Devour It!</button>
 				</form>
@@ -39,7 +39,7 @@
 		<li>
 			{{this.id}}
 			{{this.burger_name}}
-			<form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+			<form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
 				<input type="hidden" name="devoured" value="true">
 			</form>
 		</li>
