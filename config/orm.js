@@ -1,7 +1,7 @@
 var connection = require('./connection.js');
 
 // Helper function for SQL syntax.
-function printQuestionMarks(num) {
+function questionMarks(num) {
     var arr = [];
 
     for (var i = 0; i < num; i++) {
@@ -34,7 +34,7 @@ function objToSql(ob) {
 
 
 var orm = {
-    all: function (tableInput, cb) {
+    selectAll: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, result) {
             if (err) {
@@ -51,7 +51,7 @@ var orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += printQuestionMarks(vals.length);
+        queryString += questionMarks(vals.length);
         queryString += ") ";
 
         console.log(queryString);
