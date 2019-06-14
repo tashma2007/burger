@@ -84,4 +84,5 @@ var orm = {
     }
 };
 
+//export orm to models
 module.exports = orm;
