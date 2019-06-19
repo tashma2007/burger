@@ -1,61 +1,68 @@
 <div class="container">
 
 	<div class="row">
-		<div class="center col-sm-12">
-			<img src="assets/img/burger.jpeg" alt="Eat-Da-Burger">
-			<h1>Eat-Da-Burger!!!</h1>
-			<p></p>
+		<div class="col-sm-12">
+			<div class="center-align">
+				<img src="assets/img/burger.jpeg" alt="Eat-Da-Burger">
+				<h1>Eat-Da-Burger!!!</h1>
+				<p></p>
+			</div>
 		</div>
 	</div>
 </div>
 <br>
+
+<!--Uneaten burger-->
+
 <div class="row">
-	<div class="col-sm-6">
-
-		<ul>
-			{{#each burgers_data }}
-			{{#unless this.devoured}}
+	
+	<div class="col-sm">
+		<ol>
+			{{#each burgers}}
+			{{#unless devoured}}
 			<li>
-				{{this.id}}
-				{{this.burger_name}}
+				{{burger_name}}
 
-				<!--<form action="/api/burgers/{{this.id}}" method="POST">-->
-				<form action="burgers/insertOne/{{this.id}}?_method=PUT" method="POST">
-					<input type="hidden" name="devoured" value="false">
-					<button type="submit">Devour It!</button>
-				</form>
+				<button class="change-sleep btn btn-outline-dark  " data-id="{{id}}" data-newsleep="{{sleep}}"
+					value="Devour it!"
+				</button>
 
 			</li>
+
 			{{/unless}}
 			{{/each}}
-		</ul>
+		</ol>
 
 	</div>
 
-	<div class="col-sm-6">
+	<div class="col-sm-12 text-align right">
 
-		{{#each burgers}}
-		{{#if this.devoured}}
-		<li>
-			{{this.id}}
-			{{this.burger_name}}
-			<form action="burgers/updateOne/{{this.id}}?_method=PUT" method="POST">
-				<input type="hidden" name="devoured" value="true">
-			</form>
-		</li>
-		{{/if}}
-		{{/each}}
-
-	</div>
-
-</div>
-
-
-<div class="form-group">
-	<div class="col-sm-5">
-		<textarea class="form-control inputstl" rows="5" action="/" method="POST"></textarea>
-		<br>
-		<input class="btn btn-primary" type="submit" value="Submit">
-		<h5>Enter a burger you want to eat and click the "Submit" button.</h5>
+<!--Devoured burger-->
+		
+		<ol class="grey">
+			{{#each burgers}}
+			{{#if devoured}}
+			<li>
+				{{burger_name }}
+			</li>
+			{{/if}}
+			{{/each}}
+		</ol>
 	</div>
 </div>
+
+<!--Add burger to eat-->
+
+<form class="create-form">
+
+	<div class="form-group col-sm-5">
+		<label for="ca"></label>
+		<textarea class="form-control input stl" rows="3"></textarea>
+	</div>
+	<br>
+	<button class="btn btn-primary" type="submit">Submit</button>
+	<br>
+	Enter a burger you want to Eat. Then Click Submit Button
+</form>
+</div>
+

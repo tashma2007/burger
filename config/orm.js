@@ -1,7 +1,7 @@
-var connection = require('./connection.js');
+var connection = require('../config/connection.js');
 
 // Helper function for SQL syntax.
-function questionMarks(num) {
+function printQuestionMarks(num) {
     var arr = [];
 
     for (var i = 0; i < num; i++) {
@@ -34,14 +34,14 @@ function objToSql(ob) {
 
 
 var orm = {
-    selectAll: function (tableInput, cb) {
+    all: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
             cb(result)
-        })
+        });
     },
     //adds burgers to database
     insertOne: function (table, cols, vals, cb) {
@@ -51,7 +51,7 @@ var orm = {
         queryString += cols.toString();
         queryString += ") ";
         queryString += "VALUES (";
-        queryString += questionMarks(vals.length);
+        queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
         console.log(queryString);

@@ -5,7 +5,7 @@ var burger = require('../models/burger.js');
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-  burger.selectAll(function (burger_data) {
+  burger.all(function(burger_data) {
     var hbsObject = {
       burgers: burger_data
     };
@@ -15,12 +15,12 @@ router.get("/", function (req, res) {
 });
 
 //route to add burger
-router.post("/api/burgers", function (req, res) {
+router.post("/api/burgers", function(req, res) {
   burger.insertOne([
-    "burger_name"
+    "burger_name", "devoured"
   ], [
-      req.body.name
-    ], function (result) {
+      req.body.burger_name, req.body.devoured
+    ], function(result) {
       res.json({ id: result.insertId });
     });
 });
@@ -28,6 +28,8 @@ router.post("/api/burgers", function (req, res) {
 //route to update burger condition
 router.put("/api/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
+
+  console.log("condition", condition);
 
   burger.updateOne({
     devoured: req.body.devoured
